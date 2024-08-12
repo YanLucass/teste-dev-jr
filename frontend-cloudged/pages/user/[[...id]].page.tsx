@@ -11,6 +11,7 @@ import RiEdit2Fill from "@meronex/icons/ri/RiEdit2Fill";
 // @ts-ignore
 import RiDeleteBinFill from "@meronex/icons/ri/RiDeleteBinFill";
 import api from "../../utils/api";
+import TopMenu from "~/components/topMenu";
 
 interface User {
   nomeCompleto: string;
@@ -76,98 +77,93 @@ export default function User() {
   };
 
   return (
-    <Box
-      p="20px"
-      mb="20px"
-      bg="#f0f0f0"
-      minHeight="100vh"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Box
-        p="20px"
-        bg="white"
-        borderRadius="8px"
-        boxShadow="0 4px 8px rgba(0, 0, 0, 0.1)"
-        maxWidth="600px"
-        width="100%"
-      >
-        <Flex alignItems="center" mb="20px">
-          <Icon>
-            <FaUserTie />
-          </Icon>
-          <Box ml="15px">
-            <Box fontSize="20px" fontWeight="bold">
-              Usuário
+    <Box>
+      <TopMenu backLink="/users" />
+      <Flex p="20px" mb="20px" bg="#f0f0f0" minHeight="100vh">
+        <Box
+          p="20px"
+          bg="white"
+          borderRadius="8px"
+          boxShadow="0 4px 8px rgba(0, 0, 0, 0.1)"
+          maxWidth="600px"
+          width="100%"
+        >
+          <Flex alignItems="center" mb="20px">
+            <Icon>
+              <FaUserTie />
+            </Icon>
+            <Box ml="15px">
+              <Box fontSize="20px" fontWeight="bold">
+                Usuário
+              </Box>
             </Box>
-          </Box>
-        </Flex>
+          </Flex>
 
-        <Flex direction="column" mb="20px">
-          <Box fontSize="15px" mb="5px">
-            Nome:
-          </Box>
-          <Input
-            disabled={!isEditing}
-            bg="white"
-            _disabled={{
-              bg: "none",
-              color: "black",
-              opacity: "1",
-              border: "0px",
-              cursor: "pointer",
-            }}
-            aria-invalid="true"
-            value={user?.nomeCompleto || ""}
-            onChange={(e) =>
-              setUser({ ...user!, nomeCompleto: e.target.value })
-            }
-            placeholder="Digite o nome completo do Usuário"
-          />
-        </Flex>
+          <Flex direction="column" mb="20px">
+            <Box fontSize="15px" mb="5px">
+              Nome:
+            </Box>
+            <Input
+              disabled={!isEditing}
+              bg="white"
+              _disabled={{
+                bg: "gray.300",
+                color: "black",
+                opacity: "1",
+                border: "0px",
+                cursor: "pointer",
+              }}
+              aria-invalid="true"
+              value={user?.nomeCompleto || ""}
+              onChange={(e) =>
+                setUser({ ...user!, nomeCompleto: e.target.value })
+              }
+              placeholder="Digite o nome completo do Usuário"
+            />
+          </Flex>
 
-        <Flex direction="column" mb="20px">
-          <Box fontSize="15px" mb="5px">
-            Email:
-          </Box>
-          <Input
-            disabled={!isEditing}
-            bg="white"
-            _disabled={{
-              bg: "none",
-              color: "black",
-              opacity: "1",
-              border: "0px",
-              cursor: "pointer",
-            }}
-            aria-invalid="true"
-            value={user?.email || ""}
-            onChange={(e) => setUser({ ...user!, email: e.target.value })}
-            placeholder="Digite o email do Usuário"
-          />
-        </Flex>
+          <Flex direction="column" mb="20px">
+            <Box fontSize="15px" mb="5px">
+              Email:
+            </Box>
+            <Input
+              disabled={!isEditing}
+              bg="white"
+              _disabled={{
+                bg: "gray.300",
+                color: "black",
+                opacity: "1",
+                border: "0px",
+                cursor: "pointer",
+              }}
+              aria-invalid="true"
+              value={user?.email || ""}
+              onChange={(e) => setUser({ ...user!, email: e.target.value })}
+              placeholder="Digite o email do Usuário"
+            />
+          </Flex>
 
-        <Flex justifyContent="flex-end" mt="20px">
-          {isEditing ? (
-            <Flex>
-              <Button onClick={fetchEditUser} mr="10px">
-                Enviar
-              </Button>
-              <Button onClick={() => setIsEditing(false)}>Cancelar</Button>
-            </Flex>
-          ) : (
-            <Flex>
-              <IconButton mr="10px" onClick={handlerEditUser}>
-                <RiEdit2Fill />
-              </IconButton>
-              <IconButton onClick={handlerDeleteUser}>
-                <RiDeleteBinFill />
-              </IconButton>
-            </Flex>
-          )}
-        </Flex>
-      </Box>
+          <Flex justifyContent="flex-end" mt="20px">
+            {isEditing ? (
+              <Flex>
+                <Button onClick={fetchEditUser} mr="10px">
+                  Enviar
+                </Button>
+                <Button onClick={() => setIsEditing(false)}>Cancelar</Button>
+              </Flex>
+            ) : (
+              <Flex>
+                <IconButton mr="10px" onClick={handlerEditUser}>
+                  <RiEdit2Fill />
+                </IconButton>
+                <IconButton onClick={handlerDeleteUser}>
+                  <RiDeleteBinFill />
+                </IconButton>
+              </Flex>
+            )}
+          </Flex>
+        </Box>
+      </Flex>
     </Box>
   );
 }
