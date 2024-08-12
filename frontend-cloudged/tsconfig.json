@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    // "paths": {
+    //   "@/*": ["./*"]
+    // }
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src",
+    "styled-system",
+    ".next/types/**/*.ts",
+    "app/api/auth/[...nextauth]/route.page.js",
+    "pages/index.page.jsx",
+    "pages/home/index.page.tsx",
+    "pages/user/[[...id]].page.jsx"
+  ],
+  "exclude": ["node_modules"]
+}
+// {
+//   "compilerOptions": {
+//     // Your other options...
+//     "baseUrl": ".",
+//     "paths": {
+//       "~/*": ["./src/*"]
+//     }
+//   },
+//   "include": ["src", "styled-system"]
+
+
+// }

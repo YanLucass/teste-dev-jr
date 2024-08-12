@@ -1,0 +1,19 @@
+/backend-cloudged/node_modules
+/backend-cloudged/dist
+/backend-cloudged/build
+/backend-cloudged/coverage
+
+/frontend-cloudged/node_modules
+/frontend-cloudged/.pnpm
+/frontend-cloudged/next/
+/frontend-cloudged/out/
+/frontend-cloudged/build
+
+
+/desafio1/node_modules
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
