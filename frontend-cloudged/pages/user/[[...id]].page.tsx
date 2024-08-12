@@ -20,6 +20,7 @@ interface User {
 
 export default function User() {
   const [user, setUser] = useState<User | null>(null);
+  const [originalUser, setOriginalUser] = useState<User | null>(null);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const router = useRouter();
 
@@ -29,6 +30,7 @@ export default function User() {
         const response = await api.get(`/user/${router?.query?.id}`);
         if (response.data) {
           setUser(response.data);
+          setOriginalUser(response.data); // Salva os dados originais
         } else {
           router.push("/404");
         }
@@ -60,7 +62,13 @@ export default function User() {
   };
 
   const handlerEditUser = () => {
+    setOriginalUser(user); // Save current data before editing
     setIsEditing(true);
+  };
+
+  const handlerCancelEdit = () => {
+    setUser(originalUser); // Restores original data
+    setIsEditing(false);
   };
 
   const fetchEditUser = async () => {
@@ -68,6 +76,7 @@ export default function User() {
       await api.put(`/user/${router?.query?.id}`, user);
       alert("Usuário atualizado com sucesso!");
       setIsEditing(false);
+      setOriginalUser(user); // Updates the original data with the new values
     } catch (error: any) {
       console.error("Erro ao atualizar usuário:", error);
       alert(
@@ -149,7 +158,7 @@ export default function User() {
                 <Button onClick={fetchEditUser} mr="10px">
                   Enviar
                 </Button>
-                <Button onClick={() => setIsEditing(false)}>Cancelar</Button>
+                <Button onClick={handlerCancelEdit}>Cancelar</Button>
               </Flex>
             ) : (
               <Flex>
