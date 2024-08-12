@@ -173,13 +173,19 @@ http://localhost:8080
 cd teste-dev-jr
 ```
 
-3. Navegue até o diretório frontend-cloudged
+2. Navegue até o diretório frontend-cloudged
 
 ```bash
 cd frontend-cloudged
 ```
 
-4. Rode o script
+3. Instale as dependências
+
+```bash
+npm i
+```
+
+4. Execute o script
 
 ```bash
 npm run dev
@@ -193,25 +199,49 @@ http://localhost:3000
 
 ## Rotas da aplicação
 
-- **`POST url/`**: Cria um novo usuário.
+### Backend
+
+- **`POST url/user`**: Cria um novo usuário.
 
 - Utilize esse payload: </br>
 
   ```json
   {
     "nomeCompleto": "Yan Lucas Carvalho Ferreira",
-    "email": "yanlucas@cloudged.com"
+    "email": "yan.lucas@cloudged.com.br"
   }
   ```
 
-- **`GET url/users`**: Lista todos os usuários.
+- **`GET url/user`**: Lista todos os usuários.
+
+- **`GET url/user/:id`**: Lista um usuário específico.
 
 - **`PUT url/user/:id`**: Atualiza um usuário existente.
 - Utilize esse payload: </br>
   ```json
   {
     "nomeCompleto": "Yan Lucas Carvalho Ferreira",
-    "email": "yanlucas@cloudged.com"
+    "email": "yan.lucas@cloudged.com"
   }
   ```
-- **`DELETE /url/user/:id`**: Remove um usuário existente.
+- **`DELETE url/user/:id`**: Remove um usuário existente.
+
+### Frontend
+
+- **`url/`**: Cria um novo usuário.
+
+- **`GET url/users`**: Lista todos os usuários.
+
+- **`GET url/user/:id`**: Lista um usuário específico.
+
+- **`PUT url/user/:id`**: Atualiza um usuário existente.
+
+- **`DELETE url/user/:id`**: Remove um usuário existente.
+
+### Dúvidas
+
+Para quaisquer dúvidas ou questões, entre em contato por e-mail:
+
+<a href="mailto:yanlucascarvalho20@gmail.com">
+  <button>Enviar E-mail</button>
+</a>
